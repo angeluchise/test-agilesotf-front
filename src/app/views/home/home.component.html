@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="container-carousel">
-    <ngx-light-carousel [options]="options" [data]="slides" #carousel (currentChange)="test()">
+    <ngx-light-carousel [options]="options" [data]="slides" #carousel >
       <section ngx-light-carousel-container #carouselSection>
         <article ngx-light-carousel-item *ngFor="let slide of slides; let i = index">
           <div class="slide w-100">
