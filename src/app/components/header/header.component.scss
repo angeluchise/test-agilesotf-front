@@ -1,0 +1,12 @@
+@import "../../styles//base/variables";
+
+.container-header {
+  background: $blue;
+  color: white;
+  padding: 16px 26px;
+  margin-bottom: 60px;
+  text-align: right;
+  p {
+    margin: 0;
+  }
+}

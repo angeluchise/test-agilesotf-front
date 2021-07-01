@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { config } from '@config/config';
+import { LoginGuardService as GuardLogin } from './middleware/login.middleware';
 
 const routes: Routes = [
   {
@@ -10,6 +11,7 @@ const routes: Routes = [
   {
     path: config.router.home,
     loadChildren: () => import('./views/home/home.modules').then(m => m.HomeModule),
+    canActivate: [GuardLogin]
   },
   { path: '', redirectTo: config.router.login, pathMatch: 'full' },
 ];

@@ -16,4 +16,11 @@ export class LoginService {
   refresh(token) {
     return this.http.post(config.api + config.endpoints.refresh, token);
   }
+  payload() {
+    return (localStorage.getItem(config.localUser)) ? JSON.parse(localStorage.getItem(config.localUser)) : {};
+  }
+  islogin() {
+    return (localStorage.getItem(config.localToken)) ? true : false;
+  }
+
 }

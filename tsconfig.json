@@ -20,6 +20,8 @@
       "@config/*": ["src/app/config/*"],
       "@views/*": ["src/app/views/*"],
       "@services/*": ["src/app/services/*"],
+      "@components/*": ["src/app/components/*"],
+      "@middleware/*": ["src/app/middleware/*"],
     }
   }
 }
