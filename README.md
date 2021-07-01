@@ -1,7 +1,7 @@
 
 # Demo
 
-This project was generated with [Link Demo](https://angeluchise.github.io/test-agilesotf-front/#/) version 10.1.7.
+[Link Demo](https://angeluchise.github.io/test-agilesotf-front/#/)
 
 # TestAgilesotfFront
 
