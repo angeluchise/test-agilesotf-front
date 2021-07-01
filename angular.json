@@ -123,8 +123,13 @@
               "devServerTarget": "test-agilesotf-front:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "test-agilesotf-front"
 }

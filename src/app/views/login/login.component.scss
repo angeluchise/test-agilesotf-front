@@ -16,6 +16,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 30px 50px;
+  @include breakpoint(mobileonly) {
+    width: 20rem;
+  }
+  @include breakpoint(phablet) {
+    width: 20rem;
+  }
+  @include breakpoint(tablet) {
+    width: 30rem;
+  }
+
 }
 .container-text-success {
   padding: 100px 0;
