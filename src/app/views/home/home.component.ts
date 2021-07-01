@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { config } from '@config/config';
 import { GlobalState } from '@services/even.service';
@@ -18,6 +18,10 @@ export class HomeComponent implements OnInit {
   pathImagen: string;
   pageScroll: number = 1;
   pageSlider: number = 1;
+  current: any = 0;
+  numberEvent: number = 1;
+  @ViewChild('carousel') carousel:any;
+  @ViewChild('carouselSection') carouselSection:any;
   constructor(private moviesService: MoviesService, private globalState: GlobalState, private router: Router) {
     this.options = {
       animation: {
@@ -59,7 +63,6 @@ export class HomeComponent implements OnInit {
       ],
     }
   }
-
   ngOnInit(): void {
     this.slides = [];
     this.movies = [];
@@ -85,6 +88,20 @@ export class HomeComponent implements OnInit {
         this.slides.push(element);
       })
       this.pathImagen = data.imageBaseUrl;
+      const mutationObserver = new MutationObserver(() => {
+        this.numberEvent += 1;
+        if (this.numberEvent === 4) {
+          if ((this.slides.length - 3) <= this.carousel.current) {
+            this.pageSlider += 1;
+            this.getMovieNow(this.pageSlider);
+          }
+          this.numberEvent = 1;
+        }
+      })
+      mutationObserver.observe(
+        this.carouselSection.nativeElement,
+        { attributes: true }
+      )
     })
   }
   getPopular(page) {

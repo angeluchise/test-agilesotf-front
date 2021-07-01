@@ -6,8 +6,8 @@
     </div>
   </div>
   <div class="container-carousel">
-    <ngx-light-carousel [options]="options" [data]="slides">
-      <section ngx-light-carousel-container>
+    <ngx-light-carousel [options]="options" [data]="slides" #carousel (currentChange)="test()">
+      <section ngx-light-carousel-container #carouselSection>
         <article ngx-light-carousel-item *ngFor="let slide of slides; let i = index">
           <div class="slide w-100">
             <a class="pointer" (click)="goToDetails(slide.id, slide)">
@@ -18,7 +18,7 @@
         <ng-template #infiniteContainer></ng-template>
       </section>
 
-      <ng-template #carouselContent let-slide let-i="index">
+      <ng-template #carouselContent let-slide let-i="index" >
         <article>
           <div class="slide w-100">
             <a class="pointer" (click)="goToDetails(slide.id, slide)">

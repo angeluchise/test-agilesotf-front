@@ -15,7 +15,7 @@ import { HeaderModule } from '@components/header/header.module';
     HomeRoutingModule,
     NgxCarouselModule,
     InfiniteScrollModule,
-    HeaderModule
+    HeaderModule,
   ],
   declarations: [HomeComponent],
 })
