@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { config } from '@config/config';
 import { GlobalState } from '@services/even.service';
 import { LoginService } from '@services/login/login.service';
 
@@ -9,18 +11,23 @@ import { LoginService } from '@services/login/login.service';
 })
 export class HeaderComponent implements OnInit {
   user: any;
-  constructor(private loginService: LoginService, private globalState: GlobalState) {
+  constructor(private loginService: LoginService, private globalState: GlobalState, private router: Router) {
 
   }
 
   ngOnInit(): void {
-    this.user = this.loginService.payload();
-    console.log(this.user);
-    
+    this.getUser();
     this.globalState.replaySubjectSubscribe('refresh', () => {
-
+      this.getUser();
     })
 
   }
-
+  getUser() {
+    this.loginService.payload().subscribe((data: any)=> {
+      this.user = data.data;
+    });
+  }
+  goToHome() {
+    this.router.navigate([`/${config.router.home}`]);
+  }
 }

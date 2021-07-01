@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () => import('./views/home/home.modules').then(m => m.HomeModule),
     canActivate: [GuardLogin]
   },
+  {
+    path: `${config.router.details}/:id`,
+    loadChildren: () => import('./views/details/details.modules').then(m => m.DetailsModule),
+    canActivate: [GuardLogin]
+  },
   { path: '', redirectTo: config.router.login, pathMatch: 'full' },
 ];
 

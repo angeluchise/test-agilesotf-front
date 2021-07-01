@@ -40,9 +40,9 @@ export class AuthInterceptor implements HttpInterceptor, OnInit {
     if (err.status === 401) {
       this.loginService.refresh({refresh_token: localStorage.getItem(config.localRefresh)}).subscribe((result: any)=> {
         console.log(result);
-        const { data: { payload } } = result;
+        
+        const { data: { user, payload } } = result;
         localStorage.setItem(config.localToken, payload.token);
-        localStorage.setItem(config.localRefresh, payload.refresh_token);
         this.globalState.replaySubjectChanged('refresh', result);
       })
     }

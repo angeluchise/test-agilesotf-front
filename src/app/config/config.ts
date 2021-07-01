@@ -6,13 +6,14 @@ export const config = {
     movies: 'movies/',
     now_playing: 'now_playing',
     popular: 'popular',
-    actors: 'actors'
+    actors: 'actors',
+    user: 'user/me'
   },
   router: {
     login: '',
-    home: 'home'
+    home: 'home',
+    details: 'details'
   },
   localToken: 'token',
   localRefresh: 'refresh',
-  localUser: 'user'
 };

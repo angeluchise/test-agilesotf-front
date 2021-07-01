@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { config } from '@config/config';
 import { GlobalState } from '@services/even.service';
 import { MoviesService } from '@services/movies/movies.service';
 import { ngxLightOptions } from  'ngx-light-carousel';
+
 
 @Component({
   selector: 'app-home',
@@ -13,7 +16,9 @@ export class HomeComponent implements OnInit {
   slides : Array<Object> = [];
   options: ngxLightOptions;
   pathImagen: string;
-  constructor(private moviesService: MoviesService, private globalState: GlobalState) {
+  pageScroll: number = 1;
+  pageSlider: number = 1;
+  constructor(private moviesService: MoviesService, private globalState: GlobalState, private router: Router) {
     this.options = {
       animation: {
         animationClass: 'transition',
@@ -56,26 +61,41 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.slides = []
+    this.slides = [];
+    this.movies = [];
     this.globalState.replaySubjectSubscribe('refresh', () => {
-      this.getMovieNow();
-      this.getPopular();
+      if (!this.slides.length) {
+        this.getMovieNow(this.pageSlider);
+      }
+      if (!this.movies.length) {
+        this.getPopular(this.pageScroll);
+      }
+      
     })
-    this.getMovieNow();
-    this.getPopular();
+    this.getMovieNow(this.pageSlider);
+    this.getPopular(this.pageScroll);
   }
-  getMovieNow() {
-    this.moviesService.getNowPlaying().subscribe((data: any)=> {
-      console.log(data);
-      this.slides = data.data;
+  onScroll() {
+    this.pageScroll += 1;
+    this.getPopular(this.pageScroll);
+  }
+  getMovieNow(page) {
+    this.moviesService.getNowPlaying(page).subscribe((data: any)=> {
+      data.data.map((element)=> {
+        this.slides.push(element);
+      })
       this.pathImagen = data.imageBaseUrl;
     })
   }
-  getPopular() {
-    this.moviesService.getPopular().subscribe((data: any)=> {
-      console.log(data);
-      this.movies = data.data;
+  getPopular(page) {
+    this.moviesService.getPopular(page).subscribe((data: any)=> {
+      data.data.map((element)=> {
+        this.movies.push(element);
+      })
       this.pathImagen = data.imageBaseUrl;
     })
+  }
+  goToDetails(id, data) {
+    this.router.navigate(['/' + config.router.details, id], { queryParams: { data: JSON.stringify(data) } })
   }
 }

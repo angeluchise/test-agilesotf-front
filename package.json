@@ -21,6 +21,7 @@
     "@angular/router": "~10.1.6",
     "@auth0/angular-jwt": "^5.0.2",
     "bootstrap": "^5.0.2",
+    "ngx-infinite-scroll": "^10.0.1",
     "ngx-light-carousel": "^1.1.10",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

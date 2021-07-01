@@ -17,7 +17,7 @@ export class LoginService {
     return this.http.post(config.api + config.endpoints.refresh, token);
   }
   payload() {
-    return (localStorage.getItem(config.localUser)) ? JSON.parse(localStorage.getItem(config.localUser)) : {};
+    return this.http.get(config.api + config.endpoints.user);
   }
   islogin() {
     return (localStorage.getItem(config.localToken)) ? true : false;

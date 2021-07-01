@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
+import { DetailsRoutingModule } from './details-routing.module';
+import { DetailsComponent } from './details.component';
 import { NgxCarouselModule } from  'ngx-light-carousel';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { HeaderModule } from '@components/header/header.module';
@@ -12,11 +12,11 @@ import { HeaderModule } from '@components/header/header.module';
   imports: [
     CommonModule,
     FormsModule,
-    HomeRoutingModule,
+    DetailsRoutingModule,
     NgxCarouselModule,
     InfiniteScrollModule,
     HeaderModule
   ],
-  declarations: [HomeComponent],
+  declarations: [DetailsComponent],
 })
-export class HomeModule { }
+export class DetailsModule { }

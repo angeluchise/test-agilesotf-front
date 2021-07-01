@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
       this.user = user;
       localStorage.setItem(config.localToken, payload.token);
       localStorage.setItem(config.localRefresh, payload.refresh_token);
-      localStorage.setItem(config.localUser, JSON.stringify(user));
       setTimeout(() => {
         this.router.navigate([config.router.home]);
       }, 1000)
