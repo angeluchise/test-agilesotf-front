@@ -15,6 +15,11 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@config/*": ["src/app/config/*"],
+      "@views/*": ["src/app/views/*"],
+      "@services/*": ["src/app/services/*"],
+    }
   }
 }
