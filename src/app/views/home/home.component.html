@@ -6,54 +6,52 @@
     </div>
   </div>
   <div class="container-carousel">
-    <ngx-light-carousel  [options]="options"  [data]="slides">
-      <section  ngx-light-carousel-container>
-        <article  ngx-light-carousel-item  *ngFor="let slide of slides; let i = index">
+    <ngx-light-carousel [options]="options" [data]="slides">
+      <section ngx-light-carousel-container>
+        <article ngx-light-carousel-item *ngFor="let slide of slides; let i = index">
           <div class="slide w-100">
-              <a (click)="goToDetails(slide.id, slide)" >
-                  <img class="img-movie-slide" [src]="pathImagen + slide.poster_path">
-              </a>
+            <a class="pointer" (click)="goToDetails(slide.id, slide)">
+              <img class="img-movie-slide" [src]="pathImagen + slide.poster_path">
+            </a>
           </div>
-       </article>
-       <ng-template  #infiniteContainer></ng-template> 
+        </article>
+        <ng-template #infiniteContainer></ng-template>
       </section>
-      
+
       <ng-template #carouselContent let-slide let-i="index">
-      <article>
-              <div class="slide w-100">
-                  <a (click)="goToDetails(slide.id, slide)" >
-                      <img class="img-movie-slide" [src]="pathImagen + slide.poster_path">
-                  </a>
-              </div>
-      </article>
+        <article>
+          <div class="slide w-100">
+            <a class="pointer" (click)="goToDetails(slide.id, slide)">
+              <img class="img-movie-slide" [src]="pathImagen + slide.poster_path">
+            </a>
+          </div>
+        </article>
       </ng-template>
-      
-      <ng-template  #carouselPrev>
-        <div  class="click-area">
+
+      <ng-template #carouselPrev>
+        <div class="click-area">
         </div>
       </ng-template>
-    
-      <ng-template  #carouselNext>
-        <div  class="click-area">
+
+      <ng-template #carouselNext>
+        <div class="click-area">
         </div>
       </ng-template>
-      
-      <ng-template  #carouselDot  let-model>
+
+      <ng-template #carouselDot let-model>
         <div class="ball bg-accent">
         </div>
       </ng-template>
     </ngx-light-carousel>
   </div>
-  <div class="container" infiniteScroll
-  [infiniteScrollDistance]="2"
-  [infiniteScrollThrottle]="50"
-  (scrolled)="onScroll()">
+  <div class="container" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()">
     <div class="row">
       <div class="col-12">
         <h1>Películas más populares</h1>
       </div>
       <div class="col-6 col-md-3" *ngFor="let movie of movies; let i = index">
-        <a (click)="goToDetails(movie.id, movie)">
+        <a class="pointer" (click)="goToDetails(movie.id, movie)">
           <img class="img-movie" [src]="pathImagen + movie.poster_path" alt="movie">
         </a>
       </div>

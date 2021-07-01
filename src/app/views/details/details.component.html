@@ -5,10 +5,10 @@
       <h1>{{movie.original_title}}</h1>
     </div>
     <div class="col-12">
-      <img class="cover-page-img" *ngIf="pathImagen" [src]="pathImagen + movie.backdrop_path" alt="portada">
+      <img class="cover-page-img" *ngIf="pathImagen && movie.backdrop_path" [src]="pathImagen + movie.backdrop_path" alt="portada">
     </div>
     <div class="col-12">
-      <img class="img-poster" *ngIf="pathImagen" [src]="pathImagen + movie.poster_path" alt="portada">
+      <img class="img-poster" *ngIf="pathImagen && movie.poster_path" [src]="pathImagen + movie.poster_path" alt="portada">
       <p class="text-movie">{{movie.overview}}</p>
     </div>
     <div class="col-12 m-top-40">
